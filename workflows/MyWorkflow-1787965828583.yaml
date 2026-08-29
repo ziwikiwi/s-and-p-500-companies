@@ -1,0 +1,9 @@
+# {"Glue-Catalog-task":{"x":520,"y":326}}
+MyWorkflow-1787965828583:
+  dag_id: MyWorkflow-1787965828583
+  is_paused_upon_creation: false
+  tasks:
+    Glue-Catalog-task:
+      operator: >-
+        airflow.providers.amazon.aws.operators.glue_catalog.GlueCatalogCreateDatabaseOperator
+      database_name: new-db
