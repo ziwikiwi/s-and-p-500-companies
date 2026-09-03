@@ -1,0 +1,15 @@
+test-vetl-daily-sp500:
+  dag_id: 'test-vetl-daily-sp500'
+  description: 'Daily workflow to run the test-vetl Glue job (S&P 500 pipeline)'
+  schedule: '13 6 * * *'
+  default_args:
+    start_date: '2026-09-03T00:00:00.000Z'
+    retries: 1
+    retry_delay:
+      __type__: datetime.timedelta
+      seconds: 300
+  tasks:
+    run_test_vetl:
+      operator: 'airflow.providers.amazon.aws.operators.glue.GlueJobOperator'
+      job_name: 'test-vetl'
+      wait_for_completion: true
