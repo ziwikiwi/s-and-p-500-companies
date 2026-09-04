@@ -1,0 +1,37 @@
+{
+  "Name": "query-history-reader",
+  "JobMode": "VISUAL",
+  "Command": {
+    "Name": "glueetl",
+    "ScriptLocation": "s3://amazon-sagemaker-027024089510-us-west-2-635znel7hip47k/shared/jobs/query-history-reader/query-history-reader.py",
+    "PythonVersion": "3.9"
+  },
+  "Role": "arn:aws:iam::027024089510:role/AmazonSageMakerAdminIAMPermissiveExecutionRoleForTesting",
+  "GlueVersion": "5.0",
+  "WorkerType": "G.1X",
+  "NumberOfWorkers": 10,
+  "Timeout": 480,
+  "MaxRetries": 0,
+  "ExecutionProperty": {
+    "MaxConcurrentRuns": 1
+  },
+  "ExecutionClass": "STANDARD",
+  "JobRunQueuingEnabled": false,
+  "NonOverridableArguments": {},
+  "Tags": {
+    "AmazonDataZoneDomain": "dzd-bl0opwa7robff4",
+    "AmazonDataZoneProject": "635znel7hip47k"
+  },
+  "DefaultArguments": {
+    "--job-language": "python",
+    "--enable-glue-datacatalog": "true",
+    "--enable-metrics": "true",
+    "--enable-observability-metrics": "false",
+    "--enable-spark-ui": "true",
+    "--enable-auto-scaling": "true",
+    "--enable-lakeformation-fine-grained-access": "false",
+    "--smus-job-compute": "default.spark",
+    "--smus-orig-asset": "jobs/query-history-reader/query-history-reader.vetl",
+    "--conf": "spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener --conf spark.openlineage.transport.type=amazon_datazone_api --conf spark.openlineage.transport.domainId=dzd-bl0opwa7robff4 --conf spark.openlineage.columnLineage.datasetLineageEnabled=True --conf spark.openlineage.facets.custom_environment_variables=[AWS_DEFAULT_REGION;GLUE_VERSION;GLUE_COMMAND_CRITERIA;GLUE_PYTHON_VERSION;] --conf spark.glue.accountId=027024089510 --conf spark.glue.JOB_NAME=query-history-reader"
+  }
+}
