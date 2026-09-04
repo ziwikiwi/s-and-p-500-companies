@@ -1,0 +1,15 @@
+query-history-reader-daily:
+  dag_id: 'query-history-reader-daily'
+  schedule: '0 20 * * 2'
+  description: 'Weekly run of the query-history-reader Glue job on Tuesdays at 20:00 UTC (12:00 PM PST)'
+  default_args:
+    start_date: '2026-09-04T00:00:00.000Z'
+    retries: 1
+    retry_delay:
+      __type__: datetime.timedelta
+      seconds: 300
+  tasks:
+    run_query_history_reader:
+      operator: 'airflow.providers.amazon.aws.operators.glue.GlueJobOperator'
+      job_name: 'query-history-reader'
+      wait_for_completion: true
