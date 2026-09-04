@@ -1,37 +1,95 @@
 {
-  "Name": "query-history-reader",
-  "JobMode": "VISUAL",
-  "Command": {
-    "Name": "glueetl",
-    "ScriptLocation": "s3://amazon-sagemaker-027024089510-us-west-2-635znel7hip47k/shared/jobs/query-history-reader/query-history-reader.py",
-    "PythonVersion": "3.9"
+  "JobName": "query-history-reader",
+  "formInput": {
+    "FileName": "query-history-reader",
+    "ContentType": "text/x-python",
+    "Body": "import sys\nfrom pyspark.context import SparkContext\nfrom pyspark.sql import SparkSession\n\nsc = SparkContext.getOrCreate()\nspark = SparkSession.builder.getOrCreate()\n\n# Script generated for node S3DataSource\nS3DataSource_17885566296935 = spark.read.format(\"parquet\").load(\"s3://amazon-sagemaker-027024089510-us-west-2-635znel7hip47k/shared/query-history/event_date=2026-08-29/\")\n\r# Script generated for node DropTransform\nDropTransform_17885566296936 = S3DataSource_17885566296935.drop(\"duration_ms\")\n"
   },
-  "Role": "arn:aws:iam::027024089510:role/AmazonSageMakerAdminIAMPermissiveExecutionRoleForTesting",
-  "GlueVersion": "5.0",
-  "WorkerType": "G.1X",
-  "NumberOfWorkers": 10,
-  "Timeout": 480,
-  "MaxRetries": 0,
-  "ExecutionProperty": {
-    "MaxConcurrentRuns": 1
-  },
-  "ExecutionClass": "STANDARD",
-  "JobRunQueuingEnabled": false,
-  "NonOverridableArguments": {},
-  "Tags": {
-    "AmazonDataZoneDomain": "dzd-bl0opwa7robff4",
-    "AmazonDataZoneProject": "635znel7hip47k"
-  },
-  "DefaultArguments": {
-    "--job-language": "python",
-    "--enable-glue-datacatalog": "true",
-    "--enable-metrics": "true",
-    "--enable-observability-metrics": "false",
-    "--enable-spark-ui": "true",
-    "--enable-auto-scaling": "true",
-    "--enable-lakeformation-fine-grained-access": "false",
-    "--smus-job-compute": "default.spark",
-    "--smus-orig-asset": "jobs/query-history-reader/query-history-reader.vetl",
-    "--conf": "spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener --conf spark.openlineage.transport.type=amazon_datazone_api --conf spark.openlineage.transport.domainId=dzd-bl0opwa7robff4 --conf spark.openlineage.columnLineage.datasetLineageEnabled=True --conf spark.openlineage.facets.custom_environment_variables=[AWS_DEFAULT_REGION;GLUE_VERSION;GLUE_COMMAND_CRITERIA;GLUE_PYTHON_VERSION;] --conf spark.glue.accountId=027024089510 --conf spark.glue.JOB_NAME=query-history-reader"
+  "bucketName": "amazon-sagemaker-027024089510-us-west-2-635znel7hip47k",
+  "JobUpdate": {
+    "Timeout": 480,
+    "WorkerType": "G.1X",
+    "NumberOfWorkers": 10,
+    "GlueVersion": "5.0",
+    "Name": "query-history-reader",
+    "MaxRetries": 0,
+    "Role": "arn:aws:iam::027024089510:role/AmazonSageMakerAdminIAMPermissiveExecutionRoleForTesting",
+    "JobMode": "VISUAL",
+    "JobRunQueuingEnabled": false,
+    "ExecutionProperty": {
+      "MaxConcurrentRuns": 1
+    },
+    "ExecutionClass": "STANDARD",
+    "NonOverridableArguments": {},
+    "DefaultArguments": {
+      "--job-language": "python",
+      "--enable-metrics": "true",
+      "--enable-observability-metrics": "false",
+      "--enable-continuous-cloudwatch-log": "false",
+      "--enable-glue-datacatalog": "true",
+      "--enable-spark-ui": "true",
+      "--enable-auto-scaling": "true",
+      "--smus-job-compute": "default.spark",
+      "--smus-orig-asset": "repos/4pv3bkzkpkmwsw/s-and-p-500-companies/main/jobs/query-history-reader/query-history-reader.vetl",
+      "--conf": "spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener --conf spark.openlineage.transport.type=amazon_datazone_api --conf spark.openlineage.transport.domainId=dzd-bl0opwa7robff4 --conf spark.openlineage.columnLineage.datasetLineageEnabled=True --conf spark.openlineage.facets.custom_environment_variables=[AWS_DEFAULT_REGION;GLUE_VERSION;GLUE_COMMAND_CRITERIA;GLUE_PYTHON_VERSION;] --conf spark.glue.accountId=027024089510 --conf spark.glue.JOB_NAME=query-history-reader --conf spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener --conf spark.openlineage.transport.type=amazon_datazone_api --conf spark.openlineage.transport.domainId=dzd-bl0opwa7robff4 --conf spark.openlineage.columnLineage.datasetLineageEnabled=True --conf spark.openlineage.facets.custom_environment_variables=[AWS_DEFAULT_REGION;GLUE_VERSION;GLUE_COMMAND_CRITERIA;GLUE_PYTHON_VERSION;] --conf spark.glue.accountId=027024089510 --conf spark.glue.JOB_NAME=query-history-reader --conf spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener --conf spark.openlineage.transport.type=amazon_datazone_api --conf spark.openlineage.transport.domainId=dzd-bl0opwa7robff4 --conf spark.openlineage.columnLineage.datasetLineageEnabled=True --conf spark.openlineage.facets.custom_environment_variables=[AWS_DEFAULT_REGION;GLUE_VERSION;GLUE_COMMAND_CRITERIA;GLUE_PYTHON_VERSION;] --conf spark.glue.accountId=027024089510 --conf spark.glue.JOB_NAME=query-history-reader --conf spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener --conf spark.openlineage.transport.type=amazon_datazone_api --conf spark.openlineage.transport.domainId=dzd-bl0opwa7robff4 --conf spark.openlineage.columnLineage.datasetLineageEnabled=True --conf spark.openlineage.facets.custom_environment_variables=[AWS_DEFAULT_REGION;GLUE_VERSION;GLUE_COMMAND_CRITERIA;GLUE_PYTHON_VERSION;] --conf spark.glue.accountId=027024089510 --conf spark.glue.JOB_NAME=query-history-reader --conf spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener --conf spark.openlineage.transport.type=amazon_datazone_api --conf spark.openlineage.transport.domainId=dzd-bl0opwa7robff4 --conf spark.openlineage.columnLineage.datasetLineageEnabled=True --conf spark.openlineage.facets.custom_environment_variables=[AWS_DEFAULT_REGION;GLUE_VERSION;GLUE_COMMAND_CRITERIA;GLUE_PYTHON_VERSION;] --conf spark.glue.accountId=027024089510 --conf spark.glue.JOB_NAME=query-history-reader",
+      "--custom-logGroup-prefix": "datazone-635znel7hip47k-dev",
+      "--enable-lakeformation-fine-grained-access": "false"
+    },
+    "connection": {
+      "configurations": [
+        {
+          "classification": "GlueDefaultArgument",
+          "properties": {
+            "--enable-lakeformation-fine-grained-access": "false"
+          }
+        }
+      ],
+      "domainIdentifier": "dzd-bl0opwa7robff4",
+      "projectIdentifier": "635znel7hip47k",
+      "environmentIdentifier": "c77xgq2gjbk2kw",
+      "connectionIdentifier": "aiqit2lz86yh3k",
+      "name": "default.spark",
+      "displayType": "Glue (Spark)",
+      "type": "SPARK",
+      "authorizationMode": "PROJECT",
+      "provisioningType": "MANAGED",
+      "createdAt": "2026-04-06T20:15:29.686Z",
+      "updatedAt": "2026-04-06T20:15:29.686Z",
+      "location": {
+        "awsRegion": "us-west-2",
+        "awsAccountId": "027024089510"
+      },
+      "physicalEndpoints": [
+        {
+          "awsLocation": {
+            "awsAccountId": "027024089510",
+            "awsRegion": "us-west-2"
+          }
+        }
+      ],
+      "sparkGlueProperties": {
+        "glueConnection": {},
+        "sessionConfigs": {
+          "idle_timeout": 60,
+          "glue_version": "5.0",
+          "worker_type": "G.1X",
+          "number_of_workers": 10
+        }
+      }
+    },
+    "Command": {
+      "Name": "glueetl",
+      "ScriptLocation": "s3://amazon-sagemaker-027024089510-us-west-2-635znel7hip47k/shared/repos/4pv3bkzkpkmwsw/s-and-p-500-companies/main/jobs/query-history-reader/query-history-reader.py",
+      "PythonVersion": "3.9"
+    },
+    "Tags": {
+      "AmazonDataZoneProject": "635znel7hip47k",
+      "AmazonDataZoneUsername": "arn:aws:iam::027024089510:role/Admin"
+    },
+    "SourceControlDetails": {
+      "Repository": "s-and-p-500-companies",
+      "Branch": "main",
+      "Folder": "4pv3bkzkpkmwsw"
+    }
   }
 }
