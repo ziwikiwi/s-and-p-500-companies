@@ -1,0 +1,15 @@
+my_workflows_3_to_s3_tri_daily:
+  dag_id: 'my_workflows_3_to_s3_tri_daily'
+  schedule: '0 0 */3 * *'
+  description: 'Run the my-workflows-3-to-s3 Glue job every 3 days'
+  default_args:
+    start_date: '2026-09-10T00:00:00.000Z'
+    retries: 1
+    retry_delay:
+      __type__: datetime.timedelta
+      seconds: 300
+  tasks:
+    run_my_workflows_3_to_s3:
+      operator: 'airflow.providers.amazon.aws.operators.glue.GlueJobOperator'
+      job_name: 'my-workflows-3-to-s3'
+      wait_for_completion: true
