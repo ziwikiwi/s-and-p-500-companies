@@ -1,0 +1,15 @@
+my-workflows-3-to-s3-2-weekly:
+  dag_id: 'my-workflows-3-to-s3-2-weekly'
+  schedule: '0 15 * * 0'
+  description: 'Weekly run of my-workflows-3-to-s3-2 every Sunday at 7am PST'
+  default_args:
+    start_date: '2026-09-10T00:00:00.000Z'
+    retries: 1
+    retry_delay:
+      __type__: datetime.timedelta
+      seconds: 300
+  tasks:
+    run_my_workflows_3_to_s3_2:
+      operator: 'airflow.providers.amazon.aws.operators.glue.GlueJobOperator'
+      job_name: 'my-workflows-3-to-s3-2'
+      wait_for_completion: true
