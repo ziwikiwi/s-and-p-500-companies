@@ -1,7 +1,7 @@
 query-history-reader-daily:
   dag_id: 'query-history-reader-daily'
-  schedule: '0 20 * * 2'
-  description: 'Weekly run of the query-history-reader Glue job on Tuesdays at 20:00 UTC (12:00 PM PST)'
+  schedule: '0 1 */3 * *'
+  description: 'Run of the query-history-reader Glue job every 3 days at 01:00 UTC (5:00 PM PST)'
   default_args:
     start_date: '2026-09-04T00:00:00.000Z'
     retries: 1
