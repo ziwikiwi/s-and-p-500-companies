@@ -8,7 +8,7 @@ query-history-reader-daily:
       seconds: 500
     start_date: "2026-09-09T00:00:00.000Z"
   schedule: "@daily"
-  is_paused_upon_creation: false
+  is_paused_upon_creation: true
   tasks:
     run_query_history_reader:
       operator: airflow.providers.amazon.aws.operators.glue.GlueJobOperator
