@@ -7,7 +7,7 @@ query-history-reader-daily:
     retries: 1
     retry_delay:
       __type__: datetime.timedelta
-      seconds: 300
+      seconds: 500
   tasks:
     run_query_history_reader:
       operator: 'airflow.providers.amazon.aws.operators.glue.GlueJobOperator'
